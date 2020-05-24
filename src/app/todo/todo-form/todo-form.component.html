@@ -1,0 +1,12 @@
+<div class="todo-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="title" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+</div>

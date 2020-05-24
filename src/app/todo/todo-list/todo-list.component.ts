@@ -12,4 +12,8 @@ export interface Todo {
 })
 export class TodoListComponent {
   @Input() todos: Todo[];
+
+  handleTodoDelete(index: number): void {
+    this.todos.splice(index, 1);
+  }
 }

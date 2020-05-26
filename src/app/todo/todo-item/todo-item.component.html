@@ -3,10 +3,10 @@
   {{ todo.description }}
 
   <br />
-  <button class="deleteBtn" mat-fab color="primary">
-    <mat-icon (click)="onDelete()">delete</mat-icon>
+  <button class="deleteBtn" (click)="onDelete()" mat-fab color="primary">
+    <mat-icon>delete</mat-icon>
   </button>
-  <button mat-fab color="primary">
-    <mat-icon (click)="openDialog()">edit</mat-icon>
+  <button mat-fab (click)="openDialog()" color="primary">
+    <mat-icon>edit</mat-icon>
   </button>
 </mat-card-content>

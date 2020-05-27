@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-export interface Todo {
-  title: string;
-  description: string;
-}
+import { Todo, SearchTodo } from '../todo-interfaces';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,6 +8,7 @@ export interface Todo {
 })
 export class TodoListComponent {
   @Input() todos: Todo[];
+  @Input() searchTodo: SearchTodo;
 
   handleTodoDelete(index: number): void {
     this.todos.splice(index, 1);

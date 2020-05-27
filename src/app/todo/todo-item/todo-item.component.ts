@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Todo } from '../todo-list/todo-list.component';
+import { Todo } from '../todo-interfaces';
 import { TodoEditingDialogComponent } from '../todo-editing-dialog/todo-editing-dialog.component';
 
 @Component({

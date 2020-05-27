@@ -1,0 +1,15 @@
+.search-wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .search-input {
+    width: 400px;
+  }
+  .actions {
+    margin-bottom: 20px;
+  }
+  .byTitleBtn {
+    margin-right: 15px;
+  }
+}

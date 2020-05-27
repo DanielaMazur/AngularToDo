@@ -1,0 +1,24 @@
+<form class="search-wrapper">
+  <mat-form-field class="search-input">
+    <input
+      matInput
+      [(ngModel)]="searchValue"
+      [ngModelOptions]="{ standalone: true }"
+      (input)="onSearch()"
+      placeholder="Search ToDo {{ placeholder }}"
+    />
+  </mat-form-field>
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      class="byTitleBtn"
+      (click)="filterByTitle()"
+    >
+      byTitle
+    </button>
+    <button mat-raised-button color="primary" (click)="filterByDescription()">
+      byDescription
+    </button>
+  </div>
+</form>

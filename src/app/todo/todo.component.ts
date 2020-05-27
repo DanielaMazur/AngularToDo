@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Todo } from './todo-list/todo-list.component';
+import { Todo } from './todo-interfaces';
 
 @Component({
   selector: 'app-todo',
@@ -24,5 +24,10 @@ export class TodoComponent {
     if (!isTodoAlreadyExists) {
       this.todos.push({ title: title, description: description });
     }
+  }
+
+  searchTodo: string;
+  handleSearchTodo(searchValue: string) {
+    this.searchTodo = searchValue;
   }
 }

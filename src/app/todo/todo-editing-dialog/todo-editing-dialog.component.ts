@@ -1,5 +1,5 @@
 import { Component, Input, Inject } from '@angular/core';
-import { Todo } from '../todo-list/todo-list.component';
+import { Todo } from '../todo-interfaces';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

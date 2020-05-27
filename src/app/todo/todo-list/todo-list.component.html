@@ -1,5 +1,8 @@
 <div class="todos-container">
-  <mat-card class="todo-card" *ngFor="let todo of todos; let i = index">
+  <mat-card
+    class="todo-card"
+    *ngFor="let todo of todos | search: searchTodo; let i = index"
+  >
     <app-todo-item
       [todo]="todo"
       [index]="i"

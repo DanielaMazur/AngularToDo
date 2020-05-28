@@ -10,7 +10,7 @@ export class TodoListComponent {
   @Input() todos: Todo[];
   @Input() searchTodo: SearchTodo;
 
-  handleTodoDelete(index: number): void {
-    this.todos.splice(index, 1);
+  handleTodoDelete(title: string): void {
+    this.todos = this.todos.filter((todo) => todo.title !== title);
   }
 }

@@ -14,6 +14,6 @@ export class TodoEditingDialogComponent {
   ) {}
 
   onCancelClick(): void {
-    this.dialogRef.close(this.todo);
+    this.dialogRef.close();
   }
 }

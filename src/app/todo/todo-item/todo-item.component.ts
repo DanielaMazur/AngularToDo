@@ -11,13 +11,12 @@ import { TodoEditingDialogComponent } from '../todo-editing-dialog/todo-editing-
 })
 export class TodoItemComponent {
   @Input() todo: Todo;
-  @Input() index: number;
-  @Output() todoDelete = new EventEmitter<number>();
+  @Output() todoDelete = new EventEmitter<string>();
 
   constructor(public dialog: MatDialog) {}
 
   onDelete() {
-    this.todoDelete.emit(this.index);
+    this.todoDelete.emit(this.todo.title);
   }
 
   openDialog(): void {
@@ -25,8 +24,12 @@ export class TodoItemComponent {
       data: { title: this.todo.title, description: this.todo.description },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      this.todo = result;
+    dialogRef.afterClosed().subscribe((result?: Todo) => {
+      console.log('The dialog was closed');
+
+      if (result) {
+        this.todo = result;
+      }
     });
   }
 }

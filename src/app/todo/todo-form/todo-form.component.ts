@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
 import { Todo } from '../todo-interfaces';
 
 @Component({
@@ -9,13 +11,17 @@ import { Todo } from '../todo-interfaces';
 export class TodoFormComponent {
   @Output() todoSubmit = new EventEmitter<Todo>();
 
-  title: string;
-  description: string;
+  createTodoForm = new FormGroup({
+    title: new FormControl(null),
+    description: new FormControl(null),
+  });
 
   onSubmit(): void {
-    this.todoSubmit.emit({ title: this.title, description: this.description });
+    this.todoSubmit.emit({
+      title: this.createTodoForm.value.title,
+      description: this.createTodoForm.value.description,
+    });
 
-    this.title = null;
-    this.description = null;
+    this.createTodoForm.reset();
   }
 }

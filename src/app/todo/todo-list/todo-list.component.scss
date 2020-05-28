@@ -1,7 +1,13 @@
 .todos-container {
-  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   .todo-card {
     margin-bottom: 30px;
+  }
+  .column-title {
+    margin-bottom: 20px;
+    font-size: 20px;
   }
 }

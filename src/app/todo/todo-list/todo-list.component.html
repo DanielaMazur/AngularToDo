@@ -1,8 +1,39 @@
 <div class="todos-container">
-  <mat-card class="todo-card" *ngFor="let todo of todos | search: searchTodo">
-    <app-todo-item
-      [todo]="todo"
-      (todoDelete)="handleTodoDelete($event)"
-    ></app-todo-item>
-  </mat-card>
+  <div class="todos-container_inactive">
+    <span class="column-title">Inactive</span>
+    <mat-card
+      class="todo-card"
+      *ngFor="let todo of inactiveTodos | search: searchTodo"
+    >
+      <app-todo-item
+        [todo]="todo"
+        (todoDelete)="handleTodoDelete($event)"
+      ></app-todo-item>
+    </mat-card>
+  </div>
+  <div class="todos-container_in-progress">
+    <span class="column-title">In Progress {{ inactiveTodos.length }}</span>
+    <mat-card
+      class="todo-card"
+      *ngFor="let todo of inProgresTodos | search: searchTodo"
+    >
+      <app-todo-item
+        [todo]="todo"
+        (todoDelete)="handleTodoDelete($event)"
+      ></app-todo-item>
+    </mat-card>
+  </div>
+
+  <div class="todos-container_done">
+    <span class="column-title">Done</span>
+    <mat-card
+      class="todo-card"
+      *ngFor="let todo of doneTodos | search: searchTodo"
+    >
+      <app-todo-item
+        [todo]="todo"
+        (todoDelete)="handleTodoDelete($event)"
+      ></app-todo-item>
+    </mat-card>
+  </div>
 </div>

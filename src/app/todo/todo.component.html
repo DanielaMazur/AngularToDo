@@ -2,5 +2,9 @@
   <span class="todo-heading">ToDo App</span>
   <app-todo-form (todoSubmit)="handleTodoSumbmited($event)"></app-todo-form>
   <app-todo-search (searchTodo)="handleSearchTodo($event)"></app-todo-search>
-  <app-todo-list [todos]="todos" [searchTodo]="searchTodo"></app-todo-list>
+  <app-todo-list
+    class="todos-list"
+    [todos]="todos"
+    [searchTodo]="searchTodo"
+  ></app-todo-list>
 </div>

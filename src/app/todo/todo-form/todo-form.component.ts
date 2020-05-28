@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { Todo } from '../todo-interfaces';
+import { Todo, TodoStatus } from '../todo-interfaces';
 
 @Component({
   selector: 'app-todo-form',
@@ -20,6 +20,7 @@ export class TodoFormComponent {
     this.todoSubmit.emit({
       title: this.createTodoForm.value.title,
       description: this.createTodoForm.value.description,
+      status: TodoStatus.inactive,
     });
 
     this.createTodoForm.reset();

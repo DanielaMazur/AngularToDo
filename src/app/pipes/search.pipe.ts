@@ -4,7 +4,7 @@ import { Todo, SearchTodo } from '../todo/todo-interfaces';
 @Pipe({ name: 'search', pure: false })
 export class SearchPipe implements PipeTransform {
   transform(todos: Todo[], searchTodo: SearchTodo) {
-    if (!searchTodo) {
+    if (!searchTodo || todos.length) {
       return todos;
     }
 

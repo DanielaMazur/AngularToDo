@@ -1,39 +1,70 @@
 <div class="todos-container">
   <div class="todos-container_inactive">
-    <span class="column-title">Inactive</span>
-    <mat-card
-      class="todo-card"
-      *ngFor="let todo of inactiveTodos | search: searchTodo"
+    <span class="column-title">Inactive {{ inactiveTodos.length }}</span>
+    <div
+      cdkDropList
+      #inactive="cdkDropList"
+      [cdkDropListData]="inactiveTodos"
+      [cdkDropListConnectedTo]="[inProgress, done]"
+      (cdkDropListDropped)="drop($event)"
+      class="drop-list"
     >
-      <app-todo-item
-        [todo]="todo"
-        (todoDelete)="handleTodoDelete($event)"
-      ></app-todo-item>
-    </mat-card>
+      <mat-card
+        cdkDrag
+        class="todo-card"
+        *ngFor="let todo of inactiveTodos | search: searchTodo"
+      >
+        <app-todo-item
+          [todo]="todo"
+          (todoDelete)="handleTodoDelete($event)"
+        ></app-todo-item>
+      </mat-card>
+    </div>
   </div>
+
   <div class="todos-container_in-progress">
-    <span class="column-title">In Progress {{ inactiveTodos.length }}</span>
-    <mat-card
-      class="todo-card"
-      *ngFor="let todo of inProgresTodos | search: searchTodo"
+    <span class="column-title">In Progress {{ inProgressTodos.length }}</span>
+    <div
+      cdkDropList
+      #inProgress="cdkDropList"
+      [cdkDropListData]="inProgressTodos"
+      [cdkDropListConnectedTo]="[done, inactive]"
+      (cdkDropListDropped)="drop($event)"
+      class="drop-list"
     >
-      <app-todo-item
-        [todo]="todo"
-        (todoDelete)="handleTodoDelete($event)"
-      ></app-todo-item>
-    </mat-card>
+      <mat-card
+        cdkDrag
+        class="todo-card"
+        *ngFor="let todo of inProgressTodos | search: searchTodo"
+      >
+        <app-todo-item
+          [todo]="todo"
+          (todoDelete)="handleTodoDelete($event)"
+        ></app-todo-item>
+      </mat-card>
+    </div>
   </div>
 
   <div class="todos-container_done">
-    <span class="column-title">Done</span>
-    <mat-card
-      class="todo-card"
-      *ngFor="let todo of doneTodos | search: searchTodo"
+    <span class="column-title">Done {{ doneTodos.length }}</span>
+    <div
+      cdkDropList
+      #done="cdkDropList"
+      [cdkDropListData]="doneTodos"
+      [cdkDropListConnectedTo]="[inProgress, inactive]"
+      (cdkDropListDropped)="drop($event)"
+      class="drop-list"
     >
-      <app-todo-item
-        [todo]="todo"
-        (todoDelete)="handleTodoDelete($event)"
-      ></app-todo-item>
-    </mat-card>
+      <mat-card
+        cdkDrag
+        class="todo-card"
+        *ngFor="let todo of doneTodos | search: searchTodo"
+      >
+        <app-todo-item
+          [todo]="todo"
+          (todoDelete)="handleTodoDelete($event)"
+        ></app-todo-item>
+      </mat-card>
+    </div>
   </div>
 </div>

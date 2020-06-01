@@ -3,11 +3,21 @@
   flex-direction: row;
   justify-content: space-between;
 
+  &_inactive,
+  &_in-progress,
+  &_done {
+    width: 300px;
+  }
+
   .todo-card {
     margin-bottom: 30px;
   }
   .column-title {
     margin-bottom: 20px;
     font-size: 20px;
+  }
+  .drop-list {
+    width: 100%;
+    min-height: 300px;
   }
 }

@@ -1,12 +1,41 @@
 <form [formGroup]="createTodoForm" class="todo-form">
   <mat-form-field appearance="fill">
+    <mat-label>Owner</mat-label>
+    <input matInput formControlName="owner" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
     <input matInput formControlName="title" />
   </mat-form-field>
-  <br />
+
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
     <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
+
+  Select Priority
+
+  <div class="radioBtnsContainer">
+    <mat-radio-button ngDefaultControl formControlName="priority" value="high"
+      >High</mat-radio-button
+    >
+    <mat-radio-button ngDefaultControl formControlName="priority" value="medium"
+      >Medium</mat-radio-button
+    >
+    <mat-radio-button ngDefaultControl formControlName="priority" value="low"
+      >Low</mat-radio-button
+    >
+  </div>
+
+  <br />
+  <mat-form-field>
+    <mat-label>Deadline</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="deadline" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <br />
   <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
 </form>

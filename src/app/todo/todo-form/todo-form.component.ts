@@ -14,12 +14,18 @@ export class TodoFormComponent {
   createTodoForm = new FormGroup({
     title: new FormControl(null),
     description: new FormControl(null),
+    owner: new FormControl(null),
+    priority: new FormControl(null),
+    deadline: new FormControl(null),
   });
 
   onSubmit(): void {
     this.todoSubmit.emit({
       title: this.createTodoForm.value.title,
       description: this.createTodoForm.value.description,
+      owner: this.createTodoForm.value.owner,
+      priority: this.createTodoForm.value.priority,
+      deadline: this.createTodoForm.value.deadline,
     });
 
     this.createTodoForm.reset();

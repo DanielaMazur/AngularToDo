@@ -1,12 +1,19 @@
 <mat-card-title> {{ todo.title }}</mat-card-title>
 <mat-card-content class="card-content">
-  {{ todo.description }}
-
+  <p>{{ todo.description }}</p>
   <br />
-  <button class="deleteBtn" (click)="onDelete()" mat-fab color="primary">
-    <mat-icon>delete</mat-icon>
-  </button>
-  <button mat-fab (click)="openDialog()" color="primary">
-    <mat-icon>edit</mat-icon>
-  </button>
+  <div class="details-actions-container">
+    <div>
+      <p>Priority {{ todo.priority }}</p>
+      <p>Deadline {{ todo.deadline }}</p>
+    </div>
+
+    <button class="deleteBtn" (click)="onDelete()" mat-fab color="primary">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-fab (click)="openDialog()" color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
 </mat-card-content>
+{{ todo | json }}

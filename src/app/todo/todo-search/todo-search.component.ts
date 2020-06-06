@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { SearchTodo } from '../todo-interfaces';
+import { SearchTodo } from '../../interfaces/todo-interfaces';
 
 @Component({
   selector: 'app-todo-search',
@@ -7,10 +7,10 @@ import { SearchTodo } from '../todo-interfaces';
   templateUrl: './todo-search.component.html',
 })
 export class TodoSearchComponent {
+  @Output() searchTodo = new EventEmitter<SearchTodo>();
   searchValue: string;
   byTitle = true;
   placeholder = 'byTitle';
-  @Output() searchTodo = new EventEmitter<SearchTodo>();
 
   onSearch(): void {
     this.searchTodo.emit({

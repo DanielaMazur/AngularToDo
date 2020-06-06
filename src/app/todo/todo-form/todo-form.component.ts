@@ -1,32 +1,47 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
-import { Todo } from '../todo-interfaces';
+import { TodoService } from '../../todo-utils/todo.service';
+
+import { titleUniquiness } from './validators/title-uniquiness';
+
+import { Todo } from '../../interfaces/todo-interfaces';
 
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
   styleUrls: ['./todo-form.component.scss'],
 })
-export class TodoFormComponent {
-  @Output() todoSubmit = new EventEmitter<Todo>();
+export class TodoFormComponent implements OnInit {
+  todos: Todo[];
+  constructor(private fb: FormBuilder, private todoService: TodoService) {}
 
-  createTodoForm = new FormGroup({
-    title: new FormControl(null),
-    description: new FormControl(null),
-    owner: new FormControl(null),
-    priority: new FormControl(null),
-    deadline: new FormControl(null),
+  ngOnInit() {
+    this.getTodos();
+  }
+
+  createTodoForm = this.fb.group({
+    title: ['', [Validators.required, titleUniquiness]],
+    description: ['', [Validators.required]],
+    owner: ['', [Validators.required]],
+    priority: ['', [Validators.required]],
+    deadline: ['', [Validators.required]],
   });
 
+  getTodos() {
+    this.todos = this.todoService.getTodos();
+  }
+
   onSubmit(): void {
-    this.todoSubmit.emit({
-      title: this.createTodoForm.value.title,
-      description: this.createTodoForm.value.description,
-      owner: this.createTodoForm.value.owner,
-      priority: this.createTodoForm.value.priority,
-      deadline: this.createTodoForm.value.deadline,
-    });
+    const {
+      title,
+      description,
+      priority,
+      owner,
+      deadline,
+    } = this.createTodoForm.value;
+
+    this.todos.push({ title, description, priority, owner, deadline });
 
     this.createTodoForm.reset();
   }

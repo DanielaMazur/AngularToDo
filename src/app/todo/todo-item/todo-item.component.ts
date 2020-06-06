@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Todo } from '../todo-interfaces';
 import { TodoEditingDialogComponent } from '../todo-editing-dialog/todo-editing-dialog.component';
+
+import { Todo } from '../../interfaces/todo-interfaces';
 
 @Component({
   selector: 'app-todo-item',

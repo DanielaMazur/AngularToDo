@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,8 +22,10 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { TodoItemComponent } from './todo/todo-item/todo-item.component';
 import { TodoEditingDialogComponent } from './todo/todo-editing-dialog/todo-editing-dialog.component';
 import { TodoSearchComponent } from './todo/todo-search/todo-search.component';
+import { TodoFilterPriorityComponent } from './todo/todo-filter-priority/todo-filter-priority.component';
 
 import { SearchPipe } from './pipes/search.pipe';
+import { FilterPriority } from './pipes/filter-priority.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { SearchPipe } from './pipes/search.pipe';
     TodoItemComponent,
     TodoEditingDialogComponent,
     TodoSearchComponent,
+    TodoFilterPriorityComponent,
+
     SearchPipe,
+    FilterPriority,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +47,7 @@ import { SearchPipe } from './pipes/search.pipe';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -50,6 +57,7 @@ import { SearchPipe } from './pipes/search.pipe';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,7 +5,7 @@
   <div class="details-actions-container">
     <div>
       <p>Priority {{ todo.priority }}</p>
-      <p>Deadline {{ todo.deadline }}</p>
+      <p>Deadline {{ todo.deadline | date }}</p>
     </div>
 
     <button class="deleteBtn" (click)="onDelete()" mat-fab color="primary">

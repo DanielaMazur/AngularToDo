@@ -1,5 +1,10 @@
 <div class="todos-container">
-  <mat-card class="todo-card" *ngFor="let todo of todos | search: searchTodo">
+  <mat-card
+    class="todo-card"
+    *ngFor="
+      let todo of todos | filterPriority: filterPriority | search: searchTodo
+    "
+    >{{ filterPriority }}
     <app-todo-item
       [todo]="todo"
       (todoDelete)="handleTodoDelete($event)"

@@ -1,28 +1,4 @@
 <div class="todo">
-  <span class="todo-heading">ToDo App</span>
-  <app-todo-form></app-todo-form>
-
-  <div class="filter-btns">
-    <button mat-raised-button color="primary" (click)="onSearchClick()">
-      Search Todos
-    </button>
-    <button mat-raised-button color="primary" (click)="onFilterClick()">
-      Filter by Priority
-    </button>
-  </div>
-
-  <ng-template [ngIf]="isSearching">
-    <app-todo-search (searchTodo)="handleSearchTodo($event)"></app-todo-search
-  ></ng-template>
-
-  <ng-template [ngIf]="isFilter">
-    <app-filter-priority
-      (filterPriority)="handleFilterPriority($event)"
-    ></app-filter-priority
-  ></ng-template>
-
-  <app-todo-list
-    [searchTodo]="searchTodo"
-    [filterPriority]="filterPriority"
-  ></app-todo-list>
+  <app-todo-tabs></app-todo-tabs>
+  <router-outlet></router-outlet>
 </div>

@@ -11,7 +11,7 @@
     <button class="deleteBtn" (click)="onDelete()" mat-fab color="primary">
       <mat-icon>delete</mat-icon>
     </button>
-    <button mat-fab (click)="openDialog()" color="primary">
+    <button mat-fab color="primary" [routerLink]="['/EditTodo', todo.id]">
       <mat-icon>edit</mat-icon>
     </button>
   </div>

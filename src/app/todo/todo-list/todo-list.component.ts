@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { TodoService } from '../../todo-utils/todo.service';
+import { TodoService } from '../../service/todo.service';
 
-import { Todo, SearchTodo, Priority } from '../../interfaces/todo-interfaces';
+import { Todo, SearchTodo } from '../../interfaces/todo-interfaces';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,7 +11,6 @@ import { Todo, SearchTodo, Priority } from '../../interfaces/todo-interfaces';
 })
 export class TodoListComponent implements OnInit {
   @Input() searchTodo: SearchTodo;
-  @Input() filterPriority: Priority;
 
   todos: Todo[];
 
@@ -22,7 +21,7 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos(): void {
-    this.todos = this.todoService.getTodos();
+    this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
   }
 
   handleTodoDelete(title: string): void {

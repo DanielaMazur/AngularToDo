@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { v1 as uuidv1 } from 'uuid';
 
-import { TodoService } from '../../todo-utils/todo.service';
+import { TodoService } from '../../service/todo.service';
 
 import { titleUniquiness } from './validators/title-uniquiness';
 
@@ -20,7 +21,11 @@ export class TodoFormComponent implements OnInit {
     this.getTodos();
   }
 
-  createTodoForm = this.fb.group({
+  getTodos() {
+    this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
+  }
+
+  todoForm = this.fb.group({
     title: ['', [Validators.required, titleUniquiness]],
     description: ['', [Validators.required]],
     owner: ['', [Validators.required]],
@@ -28,21 +33,13 @@ export class TodoFormComponent implements OnInit {
     deadline: ['', [Validators.required]],
   });
 
-  getTodos() {
-    this.todos = this.todoService.getTodos();
-  }
-
   onSubmit(): void {
-    const {
-      title,
-      description,
-      priority,
-      owner,
-      deadline,
-    } = this.createTodoForm.value;
+    const todoDetails: Omit<Todo, 'id'> = this.todoForm.value;
+    this.todos.push({
+      id: uuidv1(),
+      ...todoDetails,
+    });
 
-    this.todos.push({ title, description, priority, owner, deadline });
-
-    this.createTodoForm.reset();
+    this.todoForm.reset();
   }
 }

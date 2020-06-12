@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { Todo } from '../interfaces/todo-interfaces';
 
@@ -8,7 +9,7 @@ import { TODOS } from '../mocked-data/mocked-todos';
   providedIn: 'root',
 })
 export class TodoService {
-  getTodos(): Todo[] {
-    return TODOS;
+  getTodos(): Observable<Todo[]> {
+    return of(TODOS);
   }
 }

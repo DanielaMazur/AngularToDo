@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { Priority } from '../interfaces/todo-interfaces';
-
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -21,10 +19,5 @@ export class TodoComponent {
   searchTodo: string;
   handleSearchTodo(searchValue: string) {
     this.searchTodo = searchValue;
-  }
-
-  filterPriority: Priority;
-  handleFilterPriority(filterPriority: Priority) {
-    this.filterPriority = filterPriority;
   }
 }

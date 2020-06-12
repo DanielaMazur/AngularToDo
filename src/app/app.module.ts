@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,19 +15,18 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-import { TodoFormComponent } from './todo/todo-form/todo-form.component';
-import { TodoListComponent } from './todo/todo-list/todo-list.component';
-import { TodoItemComponent } from './todo/todo-item/todo-item.component';
-import { TodoEditingDialogComponent } from './todo/todo-editing-dialog/todo-editing-dialog.component';
-import { TodoSearchComponent } from './todo/todo-search/todo-search.component';
-import { TodoFilterPriorityComponent } from './todo/todo-filter-priority/todo-filter-priority.component';
+import { TodoListComponent } from './todo/todo-list';
+import { TodoItemComponent } from './todo/todo-item';
+import { TodoSearchComponent } from './todo/todo-search';
+import { TabsComponent } from './todo/todo-tabs';
+import { TodoFormComponent } from './todo/todo-form';
+import { TodoEditFormComponent } from './todo/todo-edit-form';
 
 import { SearchPipe } from './pipes/search.pipe';
-import { FilterPriority } from './pipes/filter-priority.pipe';
 
 @NgModule({
   declarations: [
@@ -34,19 +35,18 @@ import { FilterPriority } from './pipes/filter-priority.pipe';
     TodoFormComponent,
     TodoListComponent,
     TodoItemComponent,
-    TodoEditingDialogComponent,
     TodoSearchComponent,
-    TodoFilterPriorityComponent,
+    TabsComponent,
+    TodoEditFormComponent,
 
     SearchPipe,
-    FilterPriority,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
 
     MatFormFieldModule,
     MatInputModule,
@@ -58,6 +58,7 @@ import { FilterPriority } from './pipes/filter-priority.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ɵConsole } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { TodoService } from 'src/app/service/todo.service';
 
@@ -20,7 +20,8 @@ export class TodoEditFormComponent {
   constructor(
     private fb: FormBuilder,
     private todoService: TodoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,7 +54,22 @@ export class TodoEditFormComponent {
   }
 
   onApplyChanges(): void {
-    const todoDetails: Todo = this.todoForm.value;
-    this.currentTodo = { ...todoDetails };
+    const todoDetails: Todo = {
+      ...this.todoForm.value,
+      id: this.currentTodo.id,
+    };
+
+    this.todos.map((todo) => {
+      if (todo.id === this.currentTodo.id) {
+        todo.id = todoDetails.id;
+        todo.owner = todoDetails.owner;
+        todo.priority = todoDetails.priority;
+        todo.title = todoDetails.title;
+        todo.description = todoDetails.description;
+        todo.deadline = todoDetails.deadline;
+      }
+    });
+
+    this.router.navigate(['/TodoList']);
   }
 }

@@ -16,6 +16,8 @@ import { TodoFormComponent } from './todo/todo-form';
 import { SearchPipe } from './pipes/search.pipe';
 import { MaterialModule } from './modules/material-module/material-module';
 import { EditTodoModule } from './todo/todo-edit-form/edit-todo.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './service/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,17 @@ import { EditTodoModule } from './todo/todo-edit-form/edit-todo.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
 
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

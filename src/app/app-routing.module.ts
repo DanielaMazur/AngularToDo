@@ -6,6 +6,12 @@ import { TodoListComponent } from './todo/todo-list';
 
 const routes: Routes = [
   { path: '', component: TodoFormComponent },
+
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth').then((m) => m.AuthModule),
+  },
+
   { path: 'TodoList', component: TodoListComponent },
 
   {
@@ -14,6 +20,10 @@ const routes: Routes = [
       import('./todo/todo-edit-form/edit-routing.module').then(
         (m) => m.EditRoutingModule
       ),
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
 
